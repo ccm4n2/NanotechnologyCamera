@@ -12,7 +12,7 @@
         android:text="@string/go"
         android:id="@+id/button"
         android:clickable="true"
-        android:onClick="goToCamera"
+        android:onClick="goToPhotosS"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/textView" />
 
@@ -20,27 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/camera"
+        android:text="@string/saved_photos"
         android:id="@+id/textView"
         android:layout_alignTop="@+id/button"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/saved_data"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/button"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/go"
-        android:id="@+id/button2"
-        android:clickable="true"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
 </RelativeLayout>

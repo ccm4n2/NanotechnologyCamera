@@ -33,6 +33,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.chandler.nanotechnologycamera.MainActivity" />
         </activity>
+        <activity
+            android:name=".PhotoAcativity"
+            android:label="@string/title_activity_photo_acativity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.chandler.nanotechnologycamera.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PhotoActivity"
+            android:label="@string/title_activity_photo"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.chandler.nanotechnologycamera.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

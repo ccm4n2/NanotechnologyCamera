@@ -1,20 +1,23 @@
-package com.example.chandler.nanotechnologycamera;
+ package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class CameraActivity extends Activity {
+public class PhotoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_photo);
+    }
 
-        //creates intent for image capture by the other application
-        Intent intent = new Intent();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_photo, menu);
+        return true;
     }
 
     @Override

@@ -37,8 +37,8 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToCamera(View view){
-        Intent intent = new Intent(this, CameraActivity.class);
+    public void goToPhotos(View view){
+        Intent intent = new Intent(this, PhotoActivity.class);
         startActivity(intent);
     }
 }

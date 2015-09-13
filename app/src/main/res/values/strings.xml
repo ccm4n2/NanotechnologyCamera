@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Nanotechnology Camera</string>
 
-    <string name="camera">Camera</string>
+    <string name="saved_photos">Saved Photos</string>
     <string name="saved_data">Saved Data</string>
     <string name ="go">Go!</string>
     <string name="action_settings">Settings</string>
@@ -9,4 +9,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_photo_acativity">PhotoAcativity</string>
+    <string name="title_activity_photo">PhotoActivity</string>
 </resources>
