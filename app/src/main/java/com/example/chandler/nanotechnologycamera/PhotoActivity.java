@@ -1,16 +1,37 @@
- package com.example.chandler.nanotechnologycamera;
+package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
+import android.content.CursorLoader;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import java.io.File;
+
+import static com.example.chandler.nanotechnologycamera.R.mipmap.ic_launcher;
 
 public class PhotoActivity extends Activity {
-
+    String TAG = "NanoTech";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Uri photo_uri = getIntent().getParcelableExtra("photo_path");
+        String convertedPath = getRealPathFromURI(photo_uri);
+
         setContentView(R.layout.activity_photo);
+        ImageView picked_image = (ImageView) findViewById(R.id.Test_image);
+
+        Bitmap bm = BitmapFactory.decodeFile(convertedPath);
+        picked_image.setImageBitmap(bm);
+
+        //Bitmap bm = BitmapFactory.decodeFile(tempfile.getAbsolutePath());
     }
 
     @Override
@@ -34,4 +55,24 @@ public class PhotoActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public String getRealPathFromURI(Uri contentUri) {
+        String[] proj = { MediaStore.Images.Media.DATA };
+
+        //This method was deprecated in API level 11
+        //Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+
+        CursorLoader cursorLoader = new CursorLoader(
+                this,
+                contentUri, proj, null, null, null);
+        Cursor cursor = cursorLoader.loadInBackground();
+
+        int column_index =
+                cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+
+
+
 }

@@ -2,12 +2,16 @@ package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
 
 public class MainActivity extends Activity {
+
+    private final int SELECT_PHOTO = 1;
+    private static final String TAG = "NanoTech";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,20 @@ public class MainActivity extends Activity {
     }
 
     public void goToPhotos(View view){
-        Intent intent = new Intent(this, PhotoActivity.class);
-        startActivity(intent);
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+        Log.d(TAG, "intent launched");
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent returnedIntent){
+        Log.d(TAG, "result");
+        super.onActivityResult(requestCode, resultCode, returnedIntent);
+        if (requestCode == SELECT_PHOTO){
+            Log.d(TAG, "select photo matched");
+            Intent photoClass = new Intent(this, PhotoActivity.class);
+            photoClass.putExtra("photo_path", returnedIntent.getData());
+            startActivity(photoClass);
+        }
     }
 }

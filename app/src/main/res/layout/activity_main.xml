@@ -9,10 +9,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/go"
+        android:text="@string/photo_button"
         android:id="@+id/button"
         android:clickable="true"
-        android:onClick="goToPhotosS"
+        android:onClick="goToPhotos"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/textView" />
 
