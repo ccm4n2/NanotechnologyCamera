@@ -3,6 +3,7 @@
     package="com.example.chandler.nanotechnologycamera" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -25,6 +26,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.chandler.nanotechnologycamera.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProcessedData"
+            android:label="@string/title_activity_processed_data"
+            android:parentActivityName=".PhotoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.chandler.nanotechnologycamera.PhotoActivity" />
         </activity>
     </application>
 

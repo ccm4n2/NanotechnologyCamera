@@ -13,4 +13,5 @@
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_photo_acativity">PhotoAcativity</string>
     <string name="title_activity_photo">PhotoActivity</string>
+    <string name="title_activity_processed_data">ProcessedData</string>
 </resources>
