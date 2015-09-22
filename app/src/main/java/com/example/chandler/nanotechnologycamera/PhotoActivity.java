@@ -1,13 +1,13 @@
 package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.io.FileOutputStream;
 
 public class PhotoActivity extends Activity {
     public static int intensityValues[][];
@@ -70,7 +72,9 @@ public class PhotoActivity extends Activity {
         int column_index =
                 cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
-        return cursor.getString(column_index);
+        String string = cursor.getString(column_index);
+        cursor.close();
+        return string;
     }
 
     public void processPhoto(View view){
@@ -99,6 +103,8 @@ public class PhotoActivity extends Activity {
                 intensityValues[i][j] = green;
             }
         }
+
+        //Write intensityValues to file
 
         Intent intent = new Intent(this, ProcessedData.class);
         intent.putExtra("intensityArray", intensityValues);
