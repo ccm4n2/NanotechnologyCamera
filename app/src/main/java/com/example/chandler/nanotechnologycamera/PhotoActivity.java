@@ -13,11 +13,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
-
-import java.io.File;
-
-import static com.example.chandler.nanotechnologycamera.R.mipmap.ic_launcher;
 
 public class PhotoActivity extends Activity {
     public static int intensityValues[][];
@@ -25,17 +22,16 @@ public class PhotoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //Get the URI of the selected photo from the Intent
         Uri photo_uri = getIntent().getParcelableExtra("photo_path");
+        //Convert photo URI to absolute filepath
         String convertedPath = getRealPathFromURI(photo_uri);
 
+        //Set ImageView image to selected image
         setContentView(R.layout.activity_photo);
         ImageView picked_image = (ImageView) findViewById(R.id.Test_image);
-
         Bitmap bm = BitmapFactory.decodeFile(convertedPath);
         picked_image.setImageBitmap(bm);
-
-        //Bitmap bm = BitmapFactory.decodeFile(tempfile.getAbsolutePath());
     }
 
     @Override
@@ -77,7 +73,7 @@ public class PhotoActivity extends Activity {
         return cursor.getString(column_index);
     }
 
-    public void processPhoto(){
+    public void processPhoto(View view){
         //accessing image
         Uri photo_uri = getIntent().getParcelableExtra("photo_path");
         String convertedPath = getRealPathFromURI(photo_uri);
@@ -96,7 +92,7 @@ public class PhotoActivity extends Activity {
 
             //each column in each row
             for(int j=0; j<width; j++){
-                int color = chosenImage.getPixel(i,j);
+                int color = chosenImage.getPixel(j,i);
 
                 //green color value of that pixel
                 int green = Color.green(color);

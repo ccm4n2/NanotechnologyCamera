@@ -42,8 +42,10 @@ public class MainActivity extends Activity {
     }
 
     public void goToPhotos(View view){
+        //Intent for picking photo from Gallery
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
+        //Intent for starting PhotoActivity
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
         Log.d(TAG, "intent launched");
     }
@@ -54,6 +56,7 @@ public class MainActivity extends Activity {
         if (requestCode == SELECT_PHOTO){
             Log.d(TAG, "select photo matched");
             Intent photoClass = new Intent(this, PhotoActivity.class);
+            //Put selected photo URI in Intent
             photoClass.putExtra("photo_path", returnedIntent.getData());
             startActivity(photoClass);
         }
