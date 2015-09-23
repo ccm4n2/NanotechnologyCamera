@@ -16,9 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+
 
 public class PhotoActivity extends Activity {
     public static int intensityValues[][];
@@ -120,7 +120,7 @@ public class PhotoActivity extends Activity {
         File file = new File(path);
 
         //create CSVWriter
-        //CsvWriter writer = new CsvWriter(new FileWriter(path));
+
 
         return path;
     }
