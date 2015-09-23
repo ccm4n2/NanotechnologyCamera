@@ -19,21 +19,21 @@ public class ProcessedData extends Activity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
         //array of data points
-        DataPoint values[] = new DataPoint[intensityValues[0].length*intensityValues.length];
+       // DataPoint values[] = new DataPoint[intensityValues[0].length*intensityValues.length];
 
         //fills DataPoint Array
         int dataCount = 0;
-        for(int i = 0; i< intensityValues.length; i++){
-            for(int j = 0;j< intensityValues[0].length; j++){
-                DataPoint data = new DataPoint(Math.sqrt(Math.pow(i, 2) + Math.pow(j, 2)), intensityValues[i][j]);
-                values[dataCount] = data;
-                dataCount++;
-            }
-        }
+        //for(int i = 0; i< intensityValues.length; i++){
+          //  for(int j = 0;j< intensityValues[0].length; j++){
+            //    DataPoint data = new DataPoint(Math.sqrt(Math.pow(i, 2) + Math.pow(j, 2)), intensityValues[i][j]);
+              //  values[dataCount] = data;
+                //dataCount++;
+           // }
+        //}
 
         //plots the data
-        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<DataPoint>(values);
-        graph.addSeries(series);
+        //PointsGraphSeries<DataPoint> series = new PointsGraphSeries<DataPoint>(values);
+        //gr/aph.addSeries(series);
     }
 
     @Override
