@@ -16,6 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class PhotoActivity extends Activity {
     public static int intensityValues[][];
     String TAG = "NanoTech";
@@ -100,13 +104,25 @@ public class PhotoActivity extends Activity {
             }
         }
 
+
         Intent intent = new Intent(this, ProcessedData.class);
-        intent.putExtra("intensityArray", intensityValues);
+
         startActivity(intent);
     }
 
-    public static int[][] getIntensityValues(){
-        return intensityValues;
+
+    public String writeArrayToFile(int[][] array){
+        //creates string of path for new file
+        String path;
+        path = "/data/data/com.example.chandler.nanotechnologycamera/files/intensity.csv";
+
+        //creates file we will be writing to
+        File file = new File(path);
+
+        //create CSVWriter
+        //CsvWriter writer = new CsvWriter(new FileWriter(path));
+
+        return path;
     }
 
 }

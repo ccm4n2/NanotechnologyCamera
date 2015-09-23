@@ -14,7 +14,6 @@ public class ProcessedData extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_processed_data);
-        int intensityValues[][] = PhotoActivity.getIntensityValues();
 
         //creates a graph to display the green pixel value from the image that was processed
         GraphView graph = (GraphView) findViewById(R.id.graph);
