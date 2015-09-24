@@ -81,49 +81,11 @@ public class PhotoActivity extends Activity {
         //accessing image
         Uri photo_uri = getIntent().getParcelableExtra("photo_path");
         String convertedPath = getRealPathFromURI(photo_uri);
-        Bitmap chosenImage = BitmapFactory.decodeFile(convertedPath);
-
-        //image dimensions
-        int height = chosenImage.getHeight();
-        int width = chosenImage.getWidth();
-
-        //creating an array to store green pixel values
-        intensityValues = new int[height][width];
-
-        //iterating through image and obtaining green pixel value to be stored in the array
-        //each row at a time
-        for(int i = 0; i<height; i++){
-
-            //each column in each row
-            for(int j=0; j<width; j++){
-                int color = chosenImage.getPixel(j,i);
-
-                //green color value of that pixel
-                int green = Color.green(color);
-                intensityValues[i][j] = green;
-            }
-        }
 
 
         Intent intent = new Intent(this, ProcessedData.class);
-
+        intent.putExtra("path", convertedPath);
         startActivity(intent);
-    }
-
-
-    public String writeArrayToFile(int[][] array){
-        //creates string of path for new file
-        String path;
-        path = "/data/data/com.example.chandler.nanotechnologycamera/files/intensity.csv";
-
-        //creates file we will be writing to
-        File file = new File(path);
-
-        //create CSVWriter
-        
-
-
-        return path;
     }
 
 }
