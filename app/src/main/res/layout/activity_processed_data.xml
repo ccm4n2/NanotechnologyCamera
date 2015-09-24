@@ -11,4 +11,13 @@
         android:layout_height="200dip"
         android:id="@+id/graph" />
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/Test_image"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="5"/>
+
 </RelativeLayout>
