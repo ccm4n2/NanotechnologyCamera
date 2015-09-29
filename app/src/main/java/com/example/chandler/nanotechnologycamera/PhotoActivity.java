@@ -89,6 +89,7 @@ public class PhotoActivity extends Activity {
 
         //creating an array to store green pixel values
         intensityValues = new int[height][width];
+        Bitmap new_bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
         //iterating through image and obtaining green pixel value to be stored in the array
         //each row at a time
@@ -101,14 +102,18 @@ public class PhotoActivity extends Activity {
                 //green color value of that pixel
                 int green = Color.green(color);
                 intensityValues[i][j] = green;
+                int new_color = Color.rgb(0, green, 0);
+                new_bitmap.setPixel(j, i, new_color);
+
+
             }
         }
-
-        //Write intensityValues to file
-
-        Intent intent = new Intent(this, ProcessedData.class);
-        intent.putExtra("intensityArray", intensityValues);
-        startActivity(intent);
+        setContentView(R.layout.activity_photo);
+        ImageView picked_image = (ImageView) findViewById(R.id.Test_image);
+        picked_image.setImageBitmap(new_bitmap);
+        //Intent intent = new Intent(this, ProcessedData.class);
+        //intent.putExtra("new_bitmap", new_bitmap);
+        //startActivity(intent);
     }
 
     public static int[][] getIntensityValues(){
