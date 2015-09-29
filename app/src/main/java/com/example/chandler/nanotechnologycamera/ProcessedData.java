@@ -30,11 +30,17 @@ public class ProcessedData extends Activity {
                 //get pixel color int
                 int pixel = chosenImage.getPixel(j,i);
 
-                //get green shade of pixel
+                //get green value of pixel
                 int green = Color.green(pixel);
 
-                //set color of converted image to this green value
-                convertedImage.setPixel(j,i,green);
+                //get alpha value of pixel
+                int alpha = Color.alpha(pixel);
+
+                //create color with alpha value and green value of pixel but with R and B values of zero
+                int color = Color.argb(alpha, 0, green, 0);
+
+                //set color of converted image to this green color we created
+                convertedImage.setPixel(j,i,color);
             }
         }
 
