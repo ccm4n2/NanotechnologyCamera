@@ -1,11 +1,13 @@
 package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.FileOutputStream;
 
 public class PhotoActivity extends Activity {
+    public static int intensityValues[][];
     String TAG = "NanoTech";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +81,38 @@ public class PhotoActivity extends Activity {
         //accessing image
         Uri photo_uri = getIntent().getParcelableExtra("photo_path");
         String convertedPath = getRealPathFromURI(photo_uri);
+        Bitmap chosenImage = BitmapFactory.decodeFile(convertedPath);
 
+        //image dimensions
+        int height = chosenImage.getHeight();
+        int width = chosenImage.getWidth();
+
+        //creating an array to store green pixel values
+        intensityValues = new int[height][width];
+
+        //iterating through image and obtaining green pixel value to be stored in the array
+        //each row at a time
+        for(int i = 0; i<height; i++){
+
+            //each column in each row
+            for(int j=0; j<width; j++){
+                int color = chosenImage.getPixel(j,i);
+
+                //green color value of that pixel
+                int green = Color.green(color);
+                intensityValues[i][j] = green;
+            }
+        }
 
         //Write intensityValues to file
 
         Intent intent = new Intent(this, ProcessedData.class);
-        intent.putExtra("path", convertedPath);
+        intent.putExtra("intensityArray", intensityValues);
         startActivity(intent);
+    }
+
+    public static int[][] getIntensityValues(){
+        return intensityValues;
     }
 
 }
