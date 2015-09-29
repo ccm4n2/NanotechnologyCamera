@@ -1,6 +1,7 @@
 package com.example.chandler.nanotechnologycamera;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -54,11 +55,27 @@ public class MainActivity extends Activity {
         Log.d(TAG, "result");
         super.onActivityResult(requestCode, resultCode, returnedIntent);
         if (requestCode == SELECT_PHOTO){
-            Log.d(TAG, "select photo matched");
-            Intent photoClass = new Intent(this, PhotoActivity.class);
-            //Put selected photo URI in Intent
-            photoClass.putExtra("photo_path", returnedIntent.getData());
-            startActivity(photoClass);
+            if (resultCode == RESULT_OK) {
+                Log.d(TAG, "select photo matched");
+                Intent photoClass = new Intent(this, PhotoActivity.class);
+                //Put selected photo URI in Intent
+                photoClass.putExtra("photo_path", returnedIntent.getData());
+                startActivity(photoClass);
+            }
+        }
+    }
+
+    public void openCamera(View view){
+        String package_name = "pl.vipek.camera2";
+        Intent camera_intent = getPackageManager().getLaunchIntentForPackage(package_name);
+        if (camera_intent != null) {
+            camera_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(camera_intent);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setData(Uri.parse("market://details?id=" + package_name));
+            startActivity(intent);
         }
     }
 }

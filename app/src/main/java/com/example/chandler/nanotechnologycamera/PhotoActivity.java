@@ -14,8 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+
 public class PhotoActivity extends Activity {
-    public static int intensityValues[][];
     String TAG = "NanoTech";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,9 @@ public class PhotoActivity extends Activity {
         int column_index =
                 cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
-        return cursor.getString(column_index);
+        String string = cursor.getString(column_index);
+        cursor.close();
+        return string;
     }
 
     public void processPhoto(View view){
@@ -76,6 +78,8 @@ public class PhotoActivity extends Activity {
         Uri photo_uri = getIntent().getParcelableExtra("photo_path");
         String convertedPath = getRealPathFromURI(photo_uri);
 
+
+        //Write intensityValues to file
 
         Intent intent = new Intent(this, ProcessedData.class);
         intent.putExtra("path", convertedPath);
