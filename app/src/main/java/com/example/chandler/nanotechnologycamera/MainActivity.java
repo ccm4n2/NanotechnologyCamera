@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
     }
 
     public void openCamera(View view){
-        String package_name = "pl.vipek.camera2";
+        String package_name = "com.twentyfouri.imscope2";
         Intent camera_intent = getPackageManager().getLaunchIntentForPackage(package_name);
         if (camera_intent != null) {
             camera_intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
